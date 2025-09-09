@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - College ERP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #f8f6f0;
+      font-family: 'Roboto', Arial, sans-serif;
+      color: #222;
+    }
+    .erp-header {
+      background: #222;
+      color: #fff;
+      padding: 1.2rem 2rem 1rem 2rem;
+      text-align: center;
+      font-family: 'Baloo 2', cursive, Arial, sans-serif;
+      font-size: 2.1rem;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 12px #1e3c7233;
+    }
+    .erp-navbar {
+      background: #2a5298;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 0.7rem 2rem;
+      align-items: center;
+      color: #fff;
+    }
+    .erp-navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+    .erp-navbar a.active, .erp-navbar a:hover {
+      background: #6dd5fa;
+      color: #2451a6;
+    }
+    .erp-user {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1rem;
+    }
+    .erp-user img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      background: #fff;
+    }
+    .erp-user-institute {
+      color: #b3e0ff;
+      font-size: 0.95em;
+    }
+    .erp-main {
+      display: flex;
+      min-height: 80vh;
+      background: #f8f6f0;
+    }
+    .erp-sidebar {
+      width: 220px;
+      background: #f4f7fa;
+      border-right: 1.5px solid #e0e7ef;
+      padding: 2rem 1rem 1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      min-height: 100%;
+    }
+    .erp-sidebar-section {
+      color: #2451a6;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 1.08rem;
+    }
+    .erp-sidebar-link {
+      color: #2a5298;
+      text-decoration: none;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      transition: background 0.2s, color 0.2s;
+      display: block;
+    }
+    .erp-sidebar-link.active, .erp-sidebar-link:hover {
+      background: #d0e7fa;
+      color: #2451a6;
+      font-weight: 600;
+    }
+    .erp-sidebar-footer {
+      margin-top: auto;
+      font-size: 0.95rem;
+      color: #888;
+    }
+    .erp-content {
+      flex: 1;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .erp-dashboard-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #6dd5fa22;
+      padding: 2.5rem 2rem;
+      margin-top: 1.5rem;
+      font-size: 1.08rem;
+      color: #333;
+      max-width: 600px;
+    }
+    @media (max-width: 900px) {
+      .erp-main {
+        flex-direction: column;
+      }
+      .erp-sidebar {
+        width: 100%;
+        flex-direction: row;
+        gap: 2rem;
+        border-right: none;
+        border-bottom: 1.5px solid #e0e7ef;
+        padding: 1rem 0.5rem;
+      }
+      .erp-content {
+        padding: 1.2rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="erp-header">
+    <img src="https://i.imgur.com/1Q9Z1Zm.png" alt="Vidya Logo" style="height:60px;vertical-align:middle;margin-right:1rem;">
+    Vidya - Progress Through Education
+  </div>
+  <div class="erp-navbar">
+    <a href="#" onclick="window.location.href='main.html'">Admission</a>
+    <a href="#" class="active">Dashboard</a>
+    <a href="#">Hostel</a>
+    <a href="#">Academics</a>
+    <a href="#">Feedback</a>
+    <a href="#">Scholarship</a>
+    <a href="#">Transportation</a>
+    <a href="#">Online Payments</a>
+    <div class="erp-user">
+      <img src="https://erp.vidyaacademy.ac.in/web/static/src/img/user_menu_avatar.png" alt="User">
+      <span>DHEERAJ JAYARAJ <span class="erp-user-institute">(Vidya Academy of Science & Technology)</span></span>
+    </div>
+  </div>
+  <div class="erp-main">
+    <aside class="erp-sidebar">
+      <div class="erp-sidebar-section">Dashboard</div>
+      <a class="erp-sidebar-link active" href="#">My Dashboard</a>
+      <div class="erp-sidebar-footer">Powered by <a href="#" style="color:#2451a6;">ITFlux</a></div>
+    </aside>
+    <section class="erp-content">
+      <div class="erp-dashboard-card">
+        <div style="font-size:1.25rem; font-weight:600; color:#444; margin-bottom:1.2rem;">Your personal dashboard is empty.</div>
+        <div style="color:#888; font-size:1.08rem; margin-bottom:0.7rem;">To add your first report into this dashboard, go to any menu, switch to list or graph view, and click <b>'Add to Dashboard'</b> in the extended search options.</div>
+        <div style="color:#888; font-size:1.08rem;">You can filter and group data before inserting into the dashboard using the search options.</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form - College ERP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 60%, #6dd5fa 100%);
+      font-family: 'Roboto', Arial, sans-serif;
+      color: #222;
+    }
+    .erp-header {
+      background: #2451a6;
+      color: #fff;
+      padding: 1.2rem 2rem 1rem 2rem;
+      text-align: center;
+      font-family: 'Baloo 2', cursive, Arial, sans-serif;
+      font-size: 2.1rem;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 12px #1e3c7233;
+    }
+    .erp-navbar {
+      background: #2a5298;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 0.7rem 2rem;
+      align-items: center;
+      color: #fff;
+    }
+    .erp-navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+    .erp-navbar a.active, .erp-navbar a:hover {
+      background: #6dd5fa;
+      color: #2451a6;
+    }
+    .erp-user {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1rem;
+    }
+    .erp-user img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      background: #fff;
+    }
+    .erp-container {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      background: #f8f6f0;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(30, 60, 114, 0.10);
+      padding: 2.5rem 2rem;
+    }
+    .erp-title {
+      font-family: 'Baloo 2', cursive, Arial, sans-serif;
+      color: #2451a6;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    .erp-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px #6dd5fa22;
+    }
+    .erp-table th, .erp-table td {
+      padding: 0.7rem 0.5rem;
+      text-align: left;
+      border-bottom: 1px solid #e0e7ef;
+      font-size: 1rem;
+    }
+    .erp-table th {
+      background: #eaf6fb;
+      color: #2451a6;
+      font-weight: 600;
+    }
+    .erp-table tr:last-child td {
+      border-bottom: none;
+    }
+    .erp-table tr.selected {
+      background: #d0e7fa;
+    }
+    .erp-table input[type=\"checkbox\"] {
+      accent-color: #2451a6;
+      width: 18px;
+      height: 18px;
+    }
+    @media (max-width: 900px) {
+      .erp-container {
+        padding: 1.2rem 0.5rem;
+      }
+      .erp-navbar {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.7rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="erp-topbar">
+    <div class="erp-logo-user">
+      <img src="https://i.imgur.com/1Q9Z1Zm.png" alt="Vidya Logo" class="erp-logo"/>
+      <div class="erp-topbar-title">Registration Form</div>
+    </div>
+    <div class="erp-topbar-menu">
+  <a href="#" class="active" onclick="showSection('registration')">Admission</a>
+  <a href="dashboard.html">Dashboard</a>
+      <a href="#">Hostel</a>
+      <a href="#">Academics</a>
+      <a href="#">Feedback</a>
+      <a href="#">Scholarship</a>
+      <a href="#">Transportation</a>
+      <a href="#">Online Payments</a>
+      <div class="erp-user">
+        <img src="https://erp.vidyaacademy.ac.in/web/static/src/img/user_menu_avatar.png" alt="User">
+        <span>DHEERAJ JAYARAJ <span class="erp-user-institute">(Vidya Academy of Science & Technology)</span></span>
+      </div>
+    </div>
+  </div>
+  <div class="erp-main">
+    <aside class="erp-sidebar">
+      <div class="erp-sidebar-section">Registration</div>
+  <a class="erp-sidebar-link active" href="#" onclick="showSection('registration')">Admission Registration</a>
+
+  <div class="erp-sidebar-section">Admission</div>
+  <a class="erp-sidebar-link" href="#" onclick="showSection('applications');return false;">My Applications</a>
+  <a class="erp-sidebar-link" href="#" onclick="showNewAppModal();return false;">New Application</a>
+      <div class="erp-sidebar-footer">Powered by <a href="#" style="color:#2451a6;">ITFlux</a></div>
+    </aside>
+    <section class="erp-content">
+      <div id="section-dashboard" style="display:none;">
+        <div class="erp-title">My Applications</div>
+        <div class="erp-dashboard-card">
+          <div style="font-size:1.25rem; font-weight:600; color:#444; margin-bottom:1.2rem;">Your personal dashboard is empty.</div>
+          <div style="color:#888; font-size:1.08rem; margin-bottom:0.7rem;">To add your first report into this dashboard, go to any menu, switch to list or graph view, and click <b>'Add to Dashboard'</b> in the extended search options.</div>
+          <div style="color:#888; font-size:1.08rem;">You can filter and group data before inserting into the dashboard using the search options.</div>
+        </div>
+      </div>
+      <div id="section-registration">
+        <div class="erp-content-header">
+          <button class="erp-btn erp-btn-primary">Create</button>
+          <span style="margin:0 0.5em; color:#888;">or</span>
+          <a href="#" class="erp-btn erp-btn-link">Import</a>
+        </div>
+        <div class="erp-table-container">
+          <table class="erp-table">
+            <thead>
+              <tr>
+                <th><input type="checkbox"></th>
+                <th>Registration Number</th>
+                <th>Application Date</th>
+                <th>Name (as per 10thCertificate)</th>
+                <th>Last Name</th>
+                <th>Registration For</th>
+                <th>Course</th>
+                <th>Admission Quota</th>
+                <th>Booking Fee</th>
+                <th>Amount Remitted</th>
+                <th>Last Updated Date</th>
+                <th>Application Created</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="selected">
+                <td><input type="checkbox" checked></td>
+                <td style="color:#2451a6; font-weight:600;">0003400</td>
+                <td style="color:#2451a6;">08/04/2024</td>
+                <td style="color:#2a5298; font-weight:600;">DHEERAJ</td>
+                <td style="color:#2a5298;">JAYARAJ</td>
+                <td>B.Tech 2024</td>
+                <td>B.Tech</td>
+                <td style="color:green;">Management</td>
+                <td>50000.00</td>
+                <td>134302.00</td>
+                <td>09/04/2024 09:16:56</td>
+                <td><input type="checkbox" checked disabled></td>
+                <td style="color:green;">Confirmed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="section-applications" style="display:none;">
+        <div class="erp-title">My Applications</div>
+        <div class="erp-app-card">
+          <div style="color:#2451a6; font-weight:600; font-size:1.1rem;">0018987</div>
+          <div style="color:#2a5298; font-weight:600;">DHEERAJ JAYARAJ-</div>
+          <div>B.Tech 2024-28 VAS-<br>Thalakkottukara, Thrissur<br>B.Tech</div>
+          <div>31/08/2006</div>
+          <div style="color:#2451a6;">jayarajdheeraj@gmail.com</div>
+        </div>
+      </div>
+      <div id="newAppModal" class="erp-modal" style="display:none;">
+        <div class="erp-modal-content">
+          <div class="erp-modal-header">
+            <span class="erp-modal-title">Application Form</span>
+            <span class="erp-modal-close" onclick="closeNewAppModal()">&times;</span>
+          </div>
+          <form class="erp-modal-form" onsubmit="event.preventDefault(); closeNewAppModal();">
+            <div class="erp-modal-row">
+              <label for="institute">Select Institute</label>
+              <input id="institute" type="text" style="background:#edeaff; border:1px solid #bdb6d8; border-radius:4px; padding:0.4em 0.7em; width:100%;" required>
+            </div>
+            <div class="erp-modal-row">
+              <label for="application">Select Application</label>
+              <select id="application" style="background:#edeaff; border:1px solid #bdb6d8; border-radius:4px; padding:0.4em 0.7em; width:100%;">
+                <option>B.Tech</option>
+                <option>M.Tech</option>
+                <option>MBA</option>
+              </select>
+            </div>
+            <div class="erp-modal-actions">
+              <button type="submit" class="erp-btn erp-btn-danger">Submit</button>
+              <span style="margin:0 0.5em; color:#888;">or</span>
+              <a href="#" onclick="closeNewAppModal();return false;" class="erp-btn erp-btn-link">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+  <style>
+    .erp-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.25);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .erp-modal-content {
+      background: #f8f8f8;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px #2228;
+      min-width: 500px;
+      max-width: 90vw;
+      padding: 0;
+      overflow: hidden;
+      animation: modalIn 0.2s cubic-bezier(.23,1.01,.32,1);
+    }
+    @keyframes modalIn {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .erp-modal-header {
+      background: #f4f4f4;
+      padding: 1.2rem 2rem 0.7rem 2rem;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #e0e7ef;
+    }
+    .erp-modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #444;
+      flex: 1;
+    }
+    .erp-modal-close {
+      font-size: 2rem;
+      color: #888;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: color 0.2s;
+    }
+    .erp-modal-close:hover {
+      color: #d32f2f;
+    }
+    .erp-modal-form {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .erp-modal-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .erp-modal-row label {
+      min-width: 160px;
+      font-weight: 600;
+      color: #444;
+    }
+    .erp-modal-actions {
+      margin-top: 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+    .erp-btn-danger {
+      background: #d32f2f;
+      color: #fff;
+      font-weight: 600;
+    }
+    .erp-btn-danger:hover {
+      background: #b71c1c;
+    }
+  </style>
+  <script>
+    function showNewAppModal() {
+      document.getElementById('newAppModal').style.display = 'flex';
+    }
+    function closeNewAppModal() {
+      document.getElementById('newAppModal').style.display = 'none';
+    }
+  </script>
+    </section>
+    <script>
+      function showSection(section) {
+        document.getElementById('section-dashboard').style.display = section === 'dashboard' ? '' : 'none';
+        document.getElementById('section-registration').style.display = section === 'registration' ? '' : 'none';
+        document.getElementById('section-applications').style.display = section === 'applications' ? '' : 'none';
+        document.getElementById('section-newapp').style.display = section === 'newapp' ? '' : 'none';
+        // Sidebar active state
+        var links = document.querySelectorAll('.erp-sidebar-link');
+        links.forEach(function(link) { link.classList.remove('active'); });
+        // Find correct link index for active state
+        if(section === 'dashboard') links[0].classList.add('active');
+        if(section === 'registration') links[1].classList.add('active');
+        if(section === 'applications') links[2].classList.add('active');
+        if(section === 'newapp') links[3].classList.add('active');
+      }
+  <style>
+    .erp-dashboard-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #6dd5fa22;
+      padding: 2.5rem 2rem;
+      margin-top: 1.5rem;
+      font-size: 1.08rem;
+      color: #333;
+      max-width: 600px;
+    }
+  </style>
+    </script>
+  <style>
+    .erp-app-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #6dd5fa22;
+      padding: 1.5rem 2rem;
+      margin-top: 1.5rem;
+      font-size: 1.08rem;
+      color: #333;
+      max-width: 400px;
+    }
+  </style>
+  </div>
+  <style>
+    .erp-topbar {
+      background: #222;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 12px #1e3c7233;
+    }
+    .erp-logo-user {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 0.7rem 2rem 0.2rem 2rem;
+    }
+    .erp-logo {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 10px;
+      border: 2px solid #e0e7ef;
+      box-shadow: 0 2px 8px #6dd5fa22;
+    }
+    .erp-topbar-title {
+      font-family: 'Baloo 2', cursive, Arial, sans-serif;
+      font-size: 2rem;
+      color: #333;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-left: 0.5rem;
+    }
+    .erp-topbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: #2a5298;
+      padding: 0.5rem 2rem;
+    }
+    .erp-topbar-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+    .erp-topbar-menu a.active, .erp-topbar-menu a:hover {
+      background: #6dd5fa;
+      color: #2451a6;
+    }
+    .erp-user {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1rem;
+    }
+    .erp-user img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      background: #fff;
+    }
+    .erp-user-institute {
+      color: #b3e0ff;
+      font-size: 0.95em;
+    }
+    .erp-main {
+      display: flex;
+      min-height: 80vh;
+      background: #f8f6f0;
+    }
+    .erp-sidebar {
+      width: 220px;
+      background: #f4f7fa;
+      border-right: 1.5px solid #e0e7ef;
+      padding: 2rem 1rem 1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      min-height: 100%;
+    }
+    .erp-sidebar-section {
+      color: #2451a6;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 1.08rem;
+    }
+    .erp-sidebar-link {
+      color: #2a5298;
+      text-decoration: none;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      transition: background 0.2s, color 0.2s;
+      display: block;
+    }
+    .erp-sidebar-link.active, .erp-sidebar-link:hover {
+      background: #d0e7fa;
+      color: #2451a6;
+      font-weight: 600;
+    }
+    .erp-sidebar-footer {
+      margin-top: auto;
+      font-size: 0.95rem;
+      color: #888;
+    }
+    .erp-content {
+      flex: 1;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .erp-content-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .erp-btn {
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      font-family: 'Roboto', Arial, sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+    .erp-btn-primary {
+      background: #2451a6;
+      color: #fff;
+      font-weight: 600;
+    }
+    .erp-btn-primary:hover {
+      background: #2a5298;
+    }
+    .erp-btn-link {
+      background: none;
+      color: #2451a6;
+      text-decoration: underline;
+      font-weight: 500;
+      padding: 0;
+    }
+    .erp-table-container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #6dd5fa22;
+      overflow-x: auto;
+    }
+    .erp-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .erp-table th, .erp-table td {
+      padding: 0.7rem 0.5rem;
+      text-align: left;
+      border-bottom: 1px solid #e0e7ef;
+      font-size: 1rem;
+    }
+    .erp-table th {
+      background: #eaf6fb;
+      color: #2451a6;
+      font-weight: 600;
+    }
+    .erp-table tr.selected {
+      background: #d0e7fa;
+    }
+    .erp-table input[type="checkbox"] {
+      accent-color: #2451a6;
+      width: 18px;
+      height: 18px;
+    }
+    @media (max-width: 900px) {
+      .erp-main {
+        flex-direction: column;
+      }
+      .erp-sidebar {
+        width: 100%;
+        flex-direction: row;
+        gap: 2rem;
+        border-right: none;
+        border-bottom: 1.5px solid #e0e7ef;
+        padding: 1rem 0.5rem;
+      }
+      .erp-content {
+        padding: 1.2rem 0.5rem;
+      }
+    }
+  </style>
+</body>
+</html>
